@@ -1,4 +1,14 @@
+# Default profile (sql)
 spring:
+  profiles:
+    active: sql
+
+---
+# SQL Profile Configuration
+spring:
+  config:
+    activate:
+      on-profile: sql
   application:
     name: Cricket-App
   datasource:
@@ -17,4 +27,26 @@ management:
       exposure:
         include: "*"
 
+---
+# MongoDB Profile Configuration
+spring:
+  config:
+    activate:
+      on-profile: mongodb
+  application:
+    name: Cricket-App
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: cricketdb
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
