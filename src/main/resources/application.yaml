@@ -1,4 +1,4 @@
-# Default profile (sql)
+# profile (sql Or mongodb)
 spring:
   profiles:
     active: sql
